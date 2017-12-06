@@ -57,7 +57,7 @@ def course_material_upload(request, course_no):
             except Exception as e:
                 print(str(e))
             unsaved_form.save()
-            return redirect('course:course_material_upload', course_no=course_no)
+            return redirect('course:course_detail_view', course_no=course_no)
     else:
         form = CourseMaterialForm()
 
@@ -94,9 +94,10 @@ def assignment_material_upload(request, course_no):
             except Exception as e:
                 print(str(e))
             unsaved_form.save()
+            return redirect('course:course_detail_view', course_no=course_no)
         else:
             print(form.errors)
-        return redirect('course:assignment_material_upload', course_no=course_no)
+            return redirect('course:assignment_material_upload', course_no=course_no)
     else:
         form = AssignmentMaterialForm()
 

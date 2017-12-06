@@ -4,9 +4,10 @@
     <script>
         var NewCount = 0
     </script>
-    <h1>Select the courses which you want to study in {{ current_semester }} semester.</h1>
+    <div align="center">
+        <h1>Select the courses which you want to study in {{ current_semester }} semester.</h1>
     <h3>Please select the choices carefully. You won't be able to change them later.</h3>
-    <form action="" method="post">{% csrf_token %}
+<form action="" method="post">{% csrf_token %}
         <h><br/>Core Courses<br/></h>
         {% for course in courses_offered %}
                 {% if not course.elective %}
@@ -39,4 +40,7 @@
         <h1><br/></h1>
         <button type="submit">Submit</button>
     </form>
+    </div>
+
 {% endblock %}
+

@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+    <style>
+    .cont{
+        margin-top: 10%;
+        text-align: center;
+    }
+    </style>
 <header>
     <nav>
     <div class="navbar navbar-inverse navbar-custom" role="navigation">
@@ -31,5 +37,11 @@
 
 
 {% block extend %}
+    <div class="cont">
+    <h1> Dear {{ user.username }}, Welcome to Ecampus</h1>
+    <hr>
+        <h3> This is the place where you can teach beyound your boundaries</h3>
+    <hr>
+    </div>
 {% endblock extend %}
 {% endblock content %}

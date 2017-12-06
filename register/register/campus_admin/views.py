@@ -222,14 +222,15 @@ def final_result_view(request,pk,pk1,pk4):
     current_student = student.objects.get(student_id=pk)
     temp = Registers.objects.filter(studentId=current_student)
     semNo = temp.order_by('semesterNo').values('semesterNo').distinct()
-    max = semNo.aggregate(Max('semesterNo'))
-    value = max['semesterNo__max']
-
-    value = value - 1
-
+    year = request.user.email[0:4]
+    temp = int(datetime.datetime.now().year) - int(year)
+    temp = 2 * temp
+    if datetime.datetime.now().month >= 8:
+        temp = temp + 1
+    temp = temp-1
    #  max = int(max) - 1
    #  print(value)
-    return render(request,'campus_admin/final_result_view.html',{'pk':pk,'pk1':pk1,'pk4':pk4,'value':value})
+    return render(request,'campus_admin/final_result_view.html',{'pk':pk,'pk1':pk1,'pk4':pk4,'value':temp})
 
 
 def final_fee_receipt_view(request,pk,pk1,pk4):
@@ -237,12 +238,14 @@ def final_fee_receipt_view(request,pk,pk1,pk4):
     current_student = student.objects.get(student_id=pk)
     temp = FeeReceipt.objects.filter(studentId=current_student)
     semNo = temp.order_by('semesterNo').values('semesterNo').distinct()
-    max = semNo.aggregate(Max('semesterNo'))
-    value = max['semesterNo__max']
-    print(semNo)
+    year = request.user.email[0:4]
+    temp = int(datetime.datetime.now().year) - int(year)
+    temp = 2*temp
+    if datetime.datetime.now().month >= 8:
+        temp = temp+1
     #  max = int(max) - 1
     #  print(value)
-    return render(request, 'campus_admin/final_fee_receipt_view.html', {'pk': pk, 'pk1': pk1, 'pk4': pk4, 'value': value})
+    return render(request, 'campus_admin/final_fee_receipt_view.html', {'pk': pk, 'pk1': pk1, 'pk4': pk4, 'value': temp})
 
 
 def result_view(request,pk,pk1,pk2,pk4):

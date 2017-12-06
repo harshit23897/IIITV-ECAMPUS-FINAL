@@ -245,7 +245,7 @@ h1 {
             <main1>
                 <article>
                         {% for announcement in announcement_in_courses %}
-                            <li>{{ announcement.announcement }}</li>
+                            <li>{{ announcement.announcement }} - {{ announcement.announcementUser }}, {{ announcement.uploaded_at }}</li>
                         {% endfor %}
                 </article>
             </main1>

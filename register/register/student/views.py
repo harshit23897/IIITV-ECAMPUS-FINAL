@@ -154,12 +154,16 @@ def course_registration_view(request):
             print(courses_offered_in_current_semester)
             # print(courses_offered_in_current_semester[0].number_of_core)
             if courses_offered.count() > 0 and courses_offered_in_current_semester.count() > 0:
+                stud = student.objects.get(user_student=request.user)
                 return render(request,
                               'course_registration_view.html',
                               {'number_of_core': courses_offered_in_current_semester[0].number_of_core,
                                'number_of_electives': courses_offered_in_current_semester[0].number_of_electives,
                                'courses_offered': courses_offered,
-                               'current_semester': current_semester
+                               'current_semester': current_semester,
+                               'pk1': stud.batch,
+                               'pk': stud.student_id,
+                               'pk4': stud.program
                                })
             else:
                 raise Http404("Page not found.")

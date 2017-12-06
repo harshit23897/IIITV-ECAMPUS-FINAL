@@ -60,6 +60,10 @@
     transition: margin-left .5s;
     padding: 16px;
 }
+.cont{
+
+    text-align: center;
+}
 </style>
 
 <body class="wrap">
@@ -79,13 +83,18 @@
 
                       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
 
-
                         {% block bar %}
-                          {{courses.course_name}}
+                          {{course.courseNo.courseName}}
                         {% endblock bar %}
                       </span>
 
                       {% block student_content %}
+                            <div class="cont">
+                          <h1>Dear {{ user.username }}, Welcome to course {{ course_no }}</h1>
+                                <hr>
+                            <h3>This is place where you can learn beyond your boundaries.</h3>
+                            <hr>
+                           </div>
                       {% endblock student_content %}
 
                     </div>

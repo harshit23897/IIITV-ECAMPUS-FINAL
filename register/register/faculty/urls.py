@@ -7,6 +7,6 @@ app_name='faculty'
 from .views import facultyHomePage
 
 urlpatterns = [
-    url(r'^$', facultyHomePage),
+    url(r'^$', facultyHomePage, name='facultyhomepage'),
     # url(r'^course/', include('register.course.urls')),
 ]
